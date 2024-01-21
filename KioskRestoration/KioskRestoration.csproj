@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Resources\**" />
+    <Compile Remove="View\assets\**" />
+    <Compile Remove="View\images\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <EmbeddedResource Remove="View\assets\**" />
+    <EmbeddedResource Remove="View\images\**" />
+    <None Remove="Resources\**" />
+    <None Remove="View\assets\**" />
+    <None Remove="View\images\**" />
+    <Page Remove="Resources\**" />
+    <Page Remove="View\assets\**" />
+    <Page Remove="View\images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="fonts\Pobeda-Bold.ttf" />
+    <None Remove="fonts\Pobeda-Regular.ttf" />
+    <None Remove="images\bagraundExhibit.jpg" />
+    <None Remove="images\bagraundList.jpg" />
+    <None Remove="images\bagraundStart.jpg" />
+    <None Remove="images\menu.png" />
+    <None Remove="View\bagraund.jpg" />
+    <None Remove="View\bagraund2.jpg" />
+    <None Remove="View\bagraundStart.jpg" />
+    <None Remove="View\menu.png" />
+    <None Remove="View\next.png" />
+    <None Remove="View\prev.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpressMvvm" Version="22.1.3" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.116" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="fonts\Pobeda-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="fonts\Pobeda-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\bagraundExhibit.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\bagraundList.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\bagraundStart.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\menu.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\next.png" />
+    <Resource Include="View\prev.png" />
+  </ItemGroup>
+
+</Project>

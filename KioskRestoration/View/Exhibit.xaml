@@ -1,0 +1,121 @@
+﻿<Page x:Class="KioskRestoration.Exhibit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KioskRestoration.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1520"
+      Title="Exhibit"
+      ManipulationStarting="Window_ManipulationStarting"
+      ManipulationDelta="Window_ManipulationDelta">
+
+    <Page.Resources>
+        <!--The movement, rotation, and size of the Rectangle is 
+        specified by its RenderTransform.-->
+        <MatrixTransform x:Key="InitialMatrixTransform">
+            <MatrixTransform.Matrix>
+                <Matrix OffsetX="0" OffsetY="0"/>
+            </MatrixTransform.Matrix>
+        </MatrixTransform>
+        
+    </Page.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/KioskRestoration;component/images/bagraundExhibit.jpg"/>
+        </Grid.Background>
+        <TextBlock x:Name="TitleExhibit"
+                       Grid.Column="0"
+                       Grid.Row="0" 
+                       Grid.ColumnSpan="3"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="20 60 20 20"
+                       Foreground="White"
+                       Width="Auto" Height="75"
+                       FontSize="72" FontFamily="../fonts/#Pobeda"/>
+        
+        <TextBlock x:Name="TextExhibit" 
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="3" 
+                   HorizontalAlignment="Left" 
+                   Margin="20 160 20 0" 
+                   Foreground="White"
+                   TextWrapping="Wrap" 
+                   VerticalAlignment="Top" 
+                   FontSize="34" Height="auto" 
+                   FontFamily="Segoe UI Semilight"
+                   
+                   Grid.RowSpan="2"
+                   TextAlignment="Justify"/>
+
+        <ListView Name="ListExhibit" BorderBrush="#00ABADB3" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Margin="0,500,0,10">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="20" Width="400">
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="380"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button Click="Button_MouseEnter_1" CommandParameter="{Binding}" BorderBrush="#00707070" Background="#00DDDDDD">
+                            <Image Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Image.Source>
+                                    <Binding Path="">
+
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="button" Content="Назад" Foreground="White" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top" FontSize="34" FontFamily="../fonts/#Pobeda" Width="120" Background="Transparent" BorderBrush="White" Click="Prev_Click"/>
+        <Popup x:Name="Popup1" Height="840" Width="1920" StaysOpen="False" Placement="Center"  AllowsTransparency="True" VerticalAlignment="Center" HorizontalAlignment="Center" Panel.ZIndex="999">
+            <Grid Background="#E5000000" Width="1400">
+                <DockPanel LastChildFill="True">
+                    <Grid DockPanel.Dock="Left">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="clouse" Grid.Row="0" Content="Закрыть" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="34" FontFamily="../fonts/#Pobeda" Width="120" Background="Transparent" BorderBrush="White" Click="Clouse_Click" />
+                        <Button x:Name="prevImage" Grid.Row="1" DockPanel.Dock="Left" Click="PrevImage_Click" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="88" Width="70" Background="#00DDDDDD" BorderBrush="#00707070">
+                            <StackPanel x:Name="StacPrev">
+                                <Image Source="/KioskRestoration;component/View/prev.png" />
+
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                    <Grid x:Name="ImageContayner" Width="1160" Height="830" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Image x:Name="imagePOPup" Width="1160" Height="auto" IsManipulationEnabled="True" ManipulationDelta="Image_ManipulationDelta" ManipulationStarting="Image_ManipulationStarting" RenderTransform="{StaticResource InitialMatrixTransform}">
+                        </Image>
+                    </Grid>
+                    <Grid DockPanel.Dock="Right">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="prevNext" Grid.Row="1" Click="NextImage_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Height="88" Width="70" Background="#00DDDDDD" BorderBrush="#00707070">
+                            <StackPanel x:Name="StacNext">
+                                <Image Source="/KioskRestoration;component/View/next.png" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </DockPanel>
+            </Grid>
+        </Popup>
+    </Grid>
+</Page>
